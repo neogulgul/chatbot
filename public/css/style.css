@@ -1,0 +1,121 @@
+@font-face {
+	font-family: "Poppins";
+	src: url(../assets/fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+	font-family: "Roboto Mono";
+	src: url(../assets/fonts/RobotoMono-Regular.ttf);
+}
+
+:root {
+	--background: #ffffff;
+	--foreground: #000000;
+}
+
+* {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins";
+	font-size: 15px;
+	font-weight: normal;
+	line-height: 125%;
+	color: var(--foreground);
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background-color: var(--background);
+}
+
+#site-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 5px;
+	overflow-x: hidden;
+}
+
+#chat {
+	width: 100%;
+	max-width: 750px;
+	height: 100%;
+	max-height: 750px;
+	border-radius: 25px;
+	border: 2px solid #ddd;
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+#messages {
+	padding: 25px;
+	height: calc(100% - 50px);
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+}
+
+.message {
+	padding: 25px;
+	word-wrap: break-word;
+	border-top: 2px solid #ddd;
+}
+
+.message.monospace {
+	word-wrap: normal;
+	overflow-x: scroll;
+	font-family: "Roboto Mono";
+	/* font-size: 10px; */
+}
+
+.message:last-child {
+	border-bottom: 2px solid #ddd;
+}
+
+form {
+	position: absolute;
+	width: calc(100% + 4px);
+	left: -2px;
+	bottom: -2px;
+}
+
+#input {
+	width: 100%;
+	height: 50px;
+	padding-left: 25px;
+	padding-right: 62.5px;
+	border-radius: 25px;
+	outline: none;
+	border: 2px solid #ddd;
+}
+
+#send {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	right: 12.5px;
+	width: 25px;
+	height: 25px;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: #bd77c777;
+	transition: 0.3s;
+}
+
+#send svg {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	width: 50%;
+	height: 50%;
+	fill: #fff;
+}
+
+#send:hover {
+	background-color: #bd77c7ff;
+}
