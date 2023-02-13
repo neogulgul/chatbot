@@ -1,3 +1,5 @@
+function random(min, max) { return Math.floor(Math.random() * (max + 1 - min)) + min }
+
 const express = require("express")
 const app = express()
 const http = require("http")
@@ -9,7 +11,20 @@ const db = require("./services/db")
 
 const port = 3000
 
-function random(min, max) { return Math.floor(Math.random() * (max + 1 - min)) + min }
+const monospaceInputs = [
+	"hello, world in c",
+	"hello, world in c++",
+	"!help"
+]
+
+const monkeImages = []
+
+fs.readdir("public/assets/img", (error, files) => {
+	if (error) { throw error }
+	files.forEach(file => {
+		monkeImages.push(file)
+	})
+})
 
 app.use(express.static(__dirname + "/public"))
 
@@ -22,21 +37,6 @@ server.listen(port, () => {
 })
 
 io.on("connection", async (socket) => {
-	const monospaceInputs = [
-		"hello, world in c",
-		"hello, world in c++",
-		"!help"
-	]
-
-	const monkeImages = []
-
-	fs.readdir("public/assets/img", (error, files) => {
-		if (error) { throw error }
-		files.forEach(file => {
-			monkeImages.push(file)
-		})
-	})
-
 	const table = await db.getIO()
 
 	let availableCommands = "Available commands:"
@@ -46,14 +46,14 @@ io.on("connection", async (socket) => {
 	availableCommands += "\r\n\t- monke"
 	availableCommands += "\r\n\t- clear"
 
-	socket.on("input", (input) => {
+	socket.on("input", (input, clientId) => {
 		if (input === "clear") {
-			io.emit("clear")
+			io.to(clientId).emit("clear")
 		}
 		else if (input === "monke") {
 			const randomIndex = random(0, monkeImages.length - 1)
 			const randomImage = monkeImages[randomIndex]
-			io.emit("output", `<img src="assets/img/${randomImage}">`)
+			io.to(clientId).emit("output", `<img src="assets/img/${randomImage}">`)
 		}
 		else {
 			let output = ""
@@ -76,7 +76,7 @@ io.on("connection", async (socket) => {
 				monospace = true
 				output = "<br>" + output
 			}
-			io.emit("output", output, monospace)
+			io.to(clientId).emit("output", output, monospace)
 		}
 	})
 })

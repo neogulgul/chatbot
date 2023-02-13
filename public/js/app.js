@@ -31,7 +31,7 @@ send.onclick = (e) => {
 	e.preventDefault()
 	if (input.value) {
 		addMessage("You: " + input.value)
-		socket.emit("input", input.value.toLowerCase())
+		socket.emit("input", input.value.toLowerCase(), socket.id)
 		lastInput = input.value
 		input.value = ""
 	}
