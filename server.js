@@ -51,7 +51,6 @@ io.on("connection", async (socket) => {
 			io.emit("clear")
 		}
 		else if (input === "monke") {
-			// todo: this
 			const randomIndex = random(0, monkeImages.length - 1)
 			const randomImage = monkeImages[randomIndex]
 			io.emit("output", `<img src="assets/img/${randomImage}">`)
