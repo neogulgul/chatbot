@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 09, 2023 at 08:17 PM
+-- Generation Time: Feb 13, 2023 at 08:16 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -39,14 +39,12 @@ CREATE TABLE `io` (
 INSERT INTO `io` (`input`, `output`) VALUES
 ('hi', 'Hello :)'),
 ('hello', 'Hi :)'),
-('dennis ritchie', '                     ,_ ,_==▄▂\r\n                  ,  ▂▃▄▄▅▅▅▂▅¾.            /    /\r\n                   ▄▆<´  \"»▓▓▓%\\       / /   / /\r\n                 ,▅7\"     ´>▓▓▓%   /  / > / >/%\r\n                 ▐¶▓       ,»▓▓¾´  /> %/%// /  /\r\n                  ▓▃▅▅▅▃,,▄▅▅▅Æ\\// ///>// />/   /\r\n                 V║«¼.;→ ║<«.,`=// />//%/% / /\r\n               //╠<´ -²,)(▓~\"-╝/¾/ %/>/ />\r\n           / / / ▐% -./▄▃▄▅▐, /7//;//% / /\r\n           / ////`▌▐ %zWv xX▓▇▌//&;% / /\r\n       / / / %//%/¾½´▌▃▄▄▄▄▃▃▐¶\\/& /\r\n         </ /</%//`▓!%▓%╣WY<Y)y&/`\\\r\n     / / %/%//</%//\\i7; ╠N>)VY>7;  \\_\r\n  /   /</ //<///<_/%\\▓  V%W%£)XY  _/%‾\\_,\r\n   / / //%/_,=--^/%/%%\\¾%¶%%}    /%%%%%%;\\,\r\n    %/< /_/ %%%%%;X%%\\%%;,     _/%%%;,     \\\r\n   / / %%%%%%;,    \\%%l%%;// _/%;, dmr\r\n /    %%%;,         <;\\-=-/ /\r\n     ;,                l'),
 ('hello, world in c', '#include <stdio.h>\r\n\r\nint main()\r\n{\r\n	printf(\"hello, world\\n\");\r\n	return 0;\r\n}'),
 ('hello, world in c++', '#include <iostream>\r\n\r\nint main()\r\n{\r\n	std::cout << \"hello, world\" << \"\\n\";\r\n	return 0;\r\n}'),
 ('bear', 'ʕ •ᴥ•ʔ'),
 ('tableflip', '(╯°□°）╯︵ ┻━┻'),
 ('tableplace', '┬─┬﻿ ノ( ゜-゜ノ)'),
-('beep boop', '┫・旦・┣'),
-('clear', '¯\\_(ツ)_/¯');
+('beep boop', '┫・旦・┣');
 
 --
 -- Indexes for dumped tables
