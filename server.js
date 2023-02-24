@@ -29,7 +29,7 @@ fs.readdir("public/assets/img", (error, files) => {
 app.use(express.static(__dirname + "/public"))
 
 app.get("/", (req, res) => {
-	res.sendFile(__dirname + "/index.html")
+	res.sendFile(__dirname + "/public/html/index.html")
 })
 
 server.listen(port, () => {
@@ -46,14 +46,14 @@ io.on("connection", async (socket) => {
 	availableCommands += "\r\n\t- monke"
 	availableCommands += "\r\n\t- clear"
 
-	socket.on("input", (input, clientId) => {
+	socket.on("input", (input) => {
 		if (input === "clear") {
-			io.to(clientId).emit("clear")
+			socket.emit("clear")
 		}
 		else if (input === "monke") {
 			const randomIndex = random(0, monkeImages.length - 1)
 			const randomImage = monkeImages[randomIndex]
-			io.to(clientId).emit("output", `<img src="assets/img/${randomImage}">`)
+			socket.emit("output", `<img src="assets/img/${randomImage}">`)
 		}
 		else {
 			let output = ""
@@ -76,7 +76,7 @@ io.on("connection", async (socket) => {
 				monospace = true
 				output = "<br>" + output
 			}
-			io.to(clientId).emit("output", output, monospace)
+			socket.emit("output", output, monospace)
 		}
 	})
 })
